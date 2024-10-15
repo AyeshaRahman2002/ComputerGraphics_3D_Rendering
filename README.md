@@ -2,37 +2,63 @@ GraphicAlgorithms_3D_Rendering
 =====================
 
 ## Overview
-This repository contains the implementation of a 3D rendering application using modern shader-based OpenGL, with additional functionality for handling matrices, vectors, texturing, lighting, and animation. The project is divided into several tasks, each addressing different components of the rendering system, such as matrix/vector operations, basic 3D rendering, texturing, and lighting.
+This repository contains the implementation of a 3D rendering application using modern shader-based OpenGL. The application includes functionalities for matrix and vector operations, texturing, lighting, and animation. It features multiple tasks, each contributing to different components such as rendering, texturing, and performance measurement.
 
 ## Project Structure
-- assets/: Contains runtime assets like textures, models, and shaders. All runtime data should be stored here, and avoid loading data from outside this directory.
-- main/: The main project source code, where most of your work will be.
-- support/: Pre-provided support functions from exercises. Do not modify this code.
-- vmlib/: Math library with some incomplete functions. You will need to implement missing functions and can add additional operators/functions.
-- third_party/: Holds third-party code. Any added third-party libraries must be documented and require prior permission via email.
+- assets/: Contains runtime assets like textures, models, and shaders. All runtime data is stored here.
+- main/: The main project source code, where most of the development work occurs.
+- support/: Pre-provided support functions from exercises. Modifications to this code are not allowed.
+- vmlib/: Math library with essential but incomplete functions. Missing functions were implemented, and additional operators were added where necessary.
+- third_party/: Third-party code used in the project. Documentation and permission are required for any new additions.
 
 ## Team Members
-This project was developed collaboratively by Ayesha Rahman, Sandra Guran, and Geeyoon Lim. Together, we implemented various components of the 3D rendering application as part of our coursework. In the attached report, a table outlining the distribution of individual and collaborative tasks is presented.
+
+Ayesha Rahman
+
+Sandra Guran
+
+Geeyoon Lim
 
 ## Tasks Breakdown
 
 1. Matrix/Vector Functions
-- Implemented matrix and vector operations for 3D computations, tested using Catch2 (matrix multiplication, rotations, etc.). Verified results using Catch2 matchers.
+- Implemented essential matrix and vector operations for 3D computations, including matrix multiplication, rotations, and translations.
+- Testing was conducted using Catch2, ensuring the results matched expected values with high precision.
+  
 2. 3D Renderer Basics
+- Developed a 3D renderer using OpenGL to load and display a terrain OBJ file representing the Paarlahti region in Finland.
+- Implemented first-person camera controls using keyboard and mouse inputs, including adjustable movement speed.
     ![Alt text](https://github.com/sc21samg/GraphicAlgorithms_3D_Rendering/blob/main/1.2%20git.png)
-- Developed a 3D renderer using OpenGL to load and display a terrain OBJ file. Implemented first-person camera controls and a basic lighting model.
+  
 3. Texturing
   ![Alt text](https://github.com/sc21samg/GraphicAlgorithms_3D_Rendering/blob/main/1.3%20git.png)
-- Applied orthophoto textures to the terrain mesh using custom shaders for texture mapping and sampling. Debugged shader and texture coordinate issues.
+- Applied orthophoto textures to the terrain using shaders for texture mapping and sampling.
+- Debugged texture sampling issues and validated texture coordinates using checkerboard patterns before applying actual orthophotos.
+  
 4. Simple Instancing
-- Added two launch pads to the scene at different positions, applying textures and rendering them correctly.
+- Added two launch pads at different coordinates and applied textures, ensuring correct rendering through OpenGL.
+  
 5. Custom Model
   ![Alt text](https://github.com/sc21samg/GraphicAlgorithms_3D_Rendering/blob/main/1.5%20git.png)
-- Built a 3D rocket model from basic shapes (cubes, cylinders, cone) and placed it on a launch pad.
+- Constructed a 3D rocket model composed of basic shapes (cubes, cylinders, and cones) and positioned it accurately on the launch pad.
+  
 6. Local Light Sources
   ![Alt text](https://github.com/sc21samg/GraphicAlgorithms_3D_Rendering/blob/main/1.6%20git.png)
-- Implemented Blinn-Phong shading with ambient, diffuse, and specular reflections. Lighting calculations added to shaders, but some issues remain with lights following the camera.
+- Implemented the Blinn-Phong shading model to simulate ambient, diffuse, and specular reflections. Added distance attenuation for point lights.
+- Debugging revealed issues with lights following the camera, which remain unresolved.
+  
 7. Animation
-- Created a smooth flight animation for the rocket, with vertical lift-off and horizontal flight, using a state machine for flight phases.
+- Created a dynamic flight animation for the rocket with lift-off and horizontal flight phases using a state machine approach for managing different stages.
+- The animation incorporates timing managed by GLFW to maintain frame-rate independence.
+  
 8. Measuring Performance
-- Measured rendering performance using OpenGL queries and CPU timing. Identified performance bottlenecks in texture loading and complex animations.- 
+- Measured rendering performance using OpenGL query objects and CPU timing via std::chrono::high_resolution_clock.
+- Detailed GPU and CPU time analysis was performed for each major section, highlighting bottlenecks and suggesting optimizations.
+
+## Results
+- Rendering Performance: The application was tested across multiple systems with different GPU capabilities (e.g., Intel Iris Xe, Intel UHD Graphics) to evaluate performance.
+- Lighting and Texturing: Visual improvements were achieved through the integration of Blinn-Phong shading and texture mapping, although some issues remain with light source positioning.
+- Animation: The rocket’s smooth flight animation demonstrated the application’s ability to simulate complex motion realistically.
+
+## Conclusion
+The project successfully implemented a functional 3D rendering application using modern OpenGL techniques, showcasing skills in matrix computations, shader development, and real-time rendering. The application provides a solid foundation for future work, such as more advanced lighting models and interactive simulations.
