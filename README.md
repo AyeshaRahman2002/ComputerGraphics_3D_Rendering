@@ -1,4 +1,4 @@
-GraphicAlgorithms_3D_Rendering
+ComputerGraphics_3D_Rendering
 =====================
 
 ## Overview
